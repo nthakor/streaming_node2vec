@@ -5,8 +5,8 @@ import random
 r1index = 0
 r2index = 0
 
-p = 0.2
-q = 0.4
+p = 0
+q = 0
 
 G = nx.Graph()
 no_of_edges=0
@@ -25,14 +25,14 @@ with open('karate.edgelist', 'rb') as csvfile:
 				add_indicator = 1
 				break
 			elif (node1 == G.nodes()[i] or node2 == G.nodes()[i]): 
-				r1 = random.random()
+				r1 = random.uniform(0,1)
 				if (r1 <= p):
 					# r1index+=1
 					G.add_edge(node1, node2)
 					add_indicator = 1
 				break
-		if (add_indicator==1):
-			r2 = random.random()
+		if (add_indicator==0):
+			r2 = random.uniform(0,1)
 			if (r2 <= q):
 				# r2index+=1
 				G.add_edge(node1, node2)
